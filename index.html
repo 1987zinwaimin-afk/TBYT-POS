@@ -48,6 +48,7 @@ messagingSenderId: "443048226219",
 appId: "1:443048226219:web:7a172e5fd89b6519e676ee",
 measurementId: "G-TDQJY1EZC8"
 };
+let editProductId = null;
 let firebaseReady=false,fbAuth=null,fbDb=null,cloudUser=null,cloudUnsub=null,cloudSaveTimer=null,applyingCloud=false,cloudLoaded=false;
 try{firebase.initializeApp(firebaseConfig);fbAuth=firebase.auth();fbDb=firebase.firestore();firebaseReady=true;}catch(e){console.error('Firebase init failed',e)}
 const $=id=>document.getElementById(id), money=n=>'฿'+Number(n||0).toFixed(2);const seed=[{id:1,name:'Drinking Water',code:'1001',cat:'Drinks',price:10,cost:6,stock:50,emoji:'💧'},{id:2,name:'Coffee',code:'1002',cat:'Drinks',price:20,cost:12,stock:30,emoji:'☕'},{id:3,name:'Coca Cola',code:'1003',cat:'Drinks',price:20,cost:13,stock:26,emoji:'🥤'},{id:4,name:'Orange Juice',code:'1004',cat:'Drinks',price:25,cost:16,stock:20,emoji:'🍊'},{id:5,name:'Snack',code:'2001',cat:'Snacks',price:15,cost:9,stock:40,emoji:'🍿'},{id:6,name:'Bread',code:'2002',cat:'Food',price:25,cost:15,stock:15,emoji:'🍞'}];
