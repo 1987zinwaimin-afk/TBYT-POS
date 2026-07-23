@@ -1,0 +1,38 @@
+TBYT POS V10.2 — Gmail Cloud Sync Setup
+
+Firebase Project: tbyt-pos
+
+1) Firebase Console > Authentication > Sign-in method
+   - Google ကို Enable လုပ်ပါ။
+
+2) Authentication > Settings > Authorized domains
+   - Netlify URL ရဲ့ domain ကို ထည့်ပါ။
+   ဥပမာ: your-site-name.netlify.app
+
+3) Firebase Console > Firestore Database
+   - Create database လုပ်ပါ။
+   - Production mode ရွေးနိုင်ပါတယ်။
+
+4) Firestore > Rules မှာ အောက်ပါ Rules ကိုထည့်ပြီး Publish လုပ်ပါ။
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /posData/{userId} {
+      allow read, write: if request.auth != null
+                         && request.auth.uid == userId;
+    }
+  }
+}
+
+အသုံးပြုပုံ
+- ပထမဖုန်းမှာ Login Gmail ကိုနှိပ်ပြီး Gmail ဖြင့်ဝင်ပါ။
+- Data များ Cloud ထဲသို့ Sync ဖြစ်ပါမည်။
+- နောက်ဖုန်း/ကွန်ပျူတာမှာ Website ကိုဖွင့်ပြီး Gmail တူတူနဲ့ Login လုပ်ပါ။
+- Products, Sales, Staff, Attendance, Salary, Stock, Settings, Notifications,
+  Permission နဲ့ Activity Log များ အတူတူပြပါမည်။
+
+မှတ်ချက်
+- Gmail မတူရင် သီးခြား Data ဖြစ်ပါမည်။
+- Internet မရှိချိန် Browser Local Data ကို ဆက်သုံးနိုင်ပြီး Internet ပြန်ရရင် Sync ကြိုးစားပါမည်။
+- ပထမဆုံး Cloud ချိတ်မယ့်အခါ Data ရှိပြီးသား Device ကနေ Gmail Login အရင်လုပ်ပါ။
